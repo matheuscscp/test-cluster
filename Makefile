@@ -1,8 +1,6 @@
 .PHONY: bootstrap
 bootstrap:
-	flux bootstrap github \
-		--read-write-key \
-		--token-auth=false \
-		--owner matheuscscp \
-		--repository test-cluster \
+	flux bootstrap git \
+		--url ssh://git@github.com/matheuscscp/test-cluster \
+		--private-key-file ./id_ed25519 \
 		--components-extra image-reflector-controller,image-automation-controller
