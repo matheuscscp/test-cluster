@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-keda-autoscaled-deployment
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: my-keda-autoscaled-deployment
+  template:
+    metadata:
+      labels:
+        app: my-keda-autoscaled-deployment
+    spec:
+      containers:
+      - name: my-keda-autoscaled-deployment
+        image: busybox
+        command:
+        - sleep
+        - "3600"
+        resources:
+          requests:
+            cpu: 10m
+            memory: 10Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: my-keda-autoscaled-deployment
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: my-keda-autoscaled-deployment
+  minReplicaCount: 1
+  triggers:
+  - type: cpu
+    metricType: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+    metadata:
+      value: "50"
