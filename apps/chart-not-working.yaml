@@ -13,7 +13,7 @@ spec:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
-      chart: charts/sample-flux-fail
+      chart: helm-charts/chart-not-working
   upgrade:
     remediation:
       retries: 2
