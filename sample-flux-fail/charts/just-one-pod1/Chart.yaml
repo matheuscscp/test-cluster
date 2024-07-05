@@ -1,0 +1,14 @@
+apiVersion: v2
+dependencies:
+- alias: just-one-pod1
+  name: just-one-pod
+  repository: ""
+  version: ^0
+- alias: just-one-pod2
+  name: just-one-pod
+  repository: ""
+  version: ^0
+description: A Helm chart for flux alias fail showcase
+name: just-one-pod1
+type: application
+version: 0.1.0
