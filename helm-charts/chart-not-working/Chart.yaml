@@ -1,0 +1,12 @@
+apiVersion: v2
+name: sample-flux-fail
+description: A Helm chart for flux alias fail showcase
+version: 0.1.0
+type: application
+dependencies:
+  - alias: just-one-pod1
+    name: just-one-pod
+    version: "^0"
+  - alias: just-one-pod2
+    name: just-one-pod
+    version: "^0"
