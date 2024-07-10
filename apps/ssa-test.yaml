@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: ssa-test
   namespace: default
+  annotations:
+    kustomize.toolkit.fluxcd.io/ssa: Merge
 data:
   foo: bar
   baz: qux
